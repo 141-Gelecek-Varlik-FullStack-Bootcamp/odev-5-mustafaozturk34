@@ -1,0 +1,88 @@
+﻿@using RealEstate.Model
+@*@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+@model IEnumerable<RealEstateViewModel>
+
+@{
+    ViewBag.Title = "Real Estate";
+}
+
+<table class="table table-dark table-striped">
+
+    <tr>
+        <th>
+            <p>Güncelle</p>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SquareMeters)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iuser)
+        </th>
+        <th>
+            <p>Delete</p>
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <button><i class="fas fa-edit"></i></button>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SquareMeters)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iuser)
+            </td>
+            <td>
+                    <button asp-controller="Home"
+                    asp-action="DeleteRealEstate"
+                    asp-route-id="@item.Id">
+                    <i class="fas fa-trash-alt"></i></button>
+            </td>
+            
+        </tr>
+    }
+</table>
+
+<style>
+    table th {
+        margin:0 auto;
+    }
+    table td{
+        text-align: center;
+        margin:0 auto;
+    }
+
+    body{
+        background-color: #6f92dc;
+    }
+</style>
